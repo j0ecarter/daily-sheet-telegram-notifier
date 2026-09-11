@@ -75,22 +75,3 @@ The first run prompts for OAuth authorisation. The "unverified app" warning is e
 
 `createDailyMorningTrigger` is the step that's easy to forget. Without it the script works perfectly and simply never fires on its own. Confirm it took by checking the **Triggers** panel (clock icon) shows one time-driven entry.
 
-## Gotchas
-
-**Trigger timing is approximate.** `atHour(7)` means somewhere between 07:00 and 08:00. Google jitters time-based triggers deliberately to spread load, and there's no way to pin one to an exact minute.
-
-**`openById()` won't open an uploaded Excel file.** A `.xlsx` sitting in Drive is not a native Google Sheet, and fails with an error that looks identical to a permissions problem. If the file shows an `.XLSX` chip next to its title, pull the value into a native sheet with `IMPORTRANGE` first and point the script at that.
-
-**Presence checks don't validate credentials.** `testConfiguration` reports whether a value is stored, not whether it works — a revoked token still reports `true`. Only an actual send proves the token is live.
-
-**Triggers are disabled after prolonged inactivity.** Google turns off triggers on projects that go untouched for several months. If notifications stop without an obvious cause, check the Triggers panel before debugging anything else.
-
-**The script runs as you.** It inherits your access to the source file. If that access is removed, it starts throwing on every run — `removeDailyMorningTrigger` turns it off cleanly.
-
-## Failure behaviour
-
-Every failure path throws rather than returning quietly, which puts the error in the **Executions** log and prompts Google to email a failure notice. Errors name the likely cause: a missing Script Property names the exact key to add, and a wrong tab name lists every tab that does exist.
-
-## Licence
-
-MIT
