@@ -1,0 +1,8 @@
+# clasp deployment config — contains the script ID, not source
+.clasp.json
+
+# Local overrides
+*.local.gs
+
+node_modules/
+.DS_Store
