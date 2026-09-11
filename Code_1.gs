@@ -1,14 +1,3 @@
-/**
- * Daily Sheet Figure Notifier
- *
- * Standalone Apps Script: reads one cell from a Google Sheet on a daily
- * schedule and pushes the value to Telegram. Read-only; nothing is attached to
- * the source spreadsheet.
- *
- * Setup: add the three Script Properties named below, set the timezone, then
- * run testConfiguration -> sendDailyFigureNotification -> createDailyMorningTrigger.
- */
-
 // --- Config -----------------------------------------------------------------
 
 // Script Property keys, not the values themselves.
